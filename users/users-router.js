@@ -41,7 +41,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/register", async (req, res, next) => {
   try {
     const saved = await usersModel.add(req.body);
     res.status(201).json(saved);
@@ -50,7 +50,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.post("/", restricted(), async (req, res, next) => {
+router.post("/login", restricted(), async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = await usersModel.findBy({ username }).first();
